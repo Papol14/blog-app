@@ -1,5 +1,8 @@
 import articleContent from "./data/articles";
-import { Link } from "react-router-dom";
+
+//Components
+import Articles from "../components/Articles";
+
 const ArticlesList = () => {
   return (
     <div className="mb-20">
@@ -8,29 +11,7 @@ const ArticlesList = () => {
       </h1>
       <div className="container py-4 mx-auto">
         <div className="flex flex-wrap m-4">
-          {articleContent.map((article, index) => (
-            <div key={index} className="p-4 md:w1/2">
-              <div className="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
-                <Link to={`/article/${article.name}`}>
-                  <img
-                    className="lg:h-48 md:h-46 w-full object-cover object-center"
-                    src={article.thumbnail}
-                    alt="blog"
-                  />
-                </Link>
-                <div className="p-6">
-                  <Link key={index} to={`/article/${article.name}`}>
-                    <h3 className="text-lg font-medium text-gray-900 mb-3">
-                      {article.title}
-                    </h3>
-                  </Link>
-                  <p className="mb-3 leading-relaxed">
-                    {article.content[0].substring(0, 110)}...
-                  </p>
-                </div>
-              </div>
-            </div>
-          ))}
+          <Articles articles={articleContent} />
         </div>
       </div>
     </div>
